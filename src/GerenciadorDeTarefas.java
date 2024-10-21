@@ -2,46 +2,107 @@ import java.util.*;
 
 public class GerenciadorDeTarefas {
 
+    private List<Tarefa> listaTarefas = new ArrayList<>();
 
 
-    public Tarefas criaTarefas (String titulo, String descricao, Date data, int prioridadeDaTarefa){
-        Tarefas tarefa = new Tarefas(titulo,descricao,data,prioridadeDaTarefa);
+    public Tarefa criaTarefa (String titulo, String descricao, Date data, int prioridadeDaTarefa){
+        Tarefa tarefa = new Tarefa(listaTarefas.size() ,titulo,descricao,data,prioridadeDaTarefa);
+        listaTarefas.add(tarefa);
         return tarefa;
 
     }
 
-    public List <Tarefas> listagemDeTarefas(int recebeOpcaoEscolhida) {
-        List<Tarefas> listaTarefas = new ArrayList<>();
-      switch (recebeOpcaoEscolhida){
-          case 1:
-              Collections.sort(listaTarefas, new ComparaPorData());
-              return listaTarefas;
-
-          case 2:
-              Collections.sort(listaTarefas, new ComparaPorTitulo()  );
-              return listaTarefas;
-
-          case 3:
-              Collections.sort(listaTarefas, new ComparaPorDataDeVencimento());
-              return listaTarefas;
-      } return null;
-    }
-
-    public List <Tarefas> listagemDeTarefasComFiltro(int escolheOpcao){
-        List<Tarefas> listaDeTarefas = new ArrayList<>();
-        switch (escolheOpcao){
-            case 1:
-                Collections.sort(listaDeTarefas, new ComparaPorTitulo());
-                return listaDeTarefas;
-
-            case 2:
-                Collections.sort(listaDeTarefas, new ComparaPorDataDeVencimento());
-                return listaDeTarefas;
+    private List<Tarefa> tarefasNaoDeletadas(){
+        List<Tarefa> tarefasNaoRemovidas = new ArrayList<>();
+        for(Tarefa tarefa : listaTarefas){
+            if(!tarefa.isRemovido()){
+                tarefasNaoRemovidas.add(tarefa);
+            }
         }
+        return tarefasNaoRemovidas;
+    }
+
+    public List<Tarefa> listagemDeTarefaPorData(){
+        List<Tarefa> tarefasNaoRemovidas = tarefasNaoDeletadas();
+        Collections.sort(tarefasNaoRemovidas, new ComparaPorData());
+        return tarefasNaoRemovidas;
+    }
+
+
+    public List<Tarefa> listagemDeTarefaPorTitulo(){
+        List<Tarefa> tarefasNaoRemovidas = tarefasNaoDeletadas();
+        Collections.sort(tarefasNaoRemovidas, new ComparaPorTitulo());
+        return tarefasNaoRemovidas;
+    }
+
+    public List<Tarefa> listagemDeTarefaPorDataDeVencimento(){
+        List<Tarefa> tarefasNaoRemovidas = tarefasNaoDeletadas();
+        Collections.sort(tarefasNaoRemovidas, new ComparaPorDataDeVencimento());
+        return tarefasNaoRemovidas;
+    }
+
+    //Cria uma lista de Sting, varre uma lista de tarefas com toString e adicionar na lista de String
+
+    public List<String> exibiListaDeTarefas (List<Tarefa> lista){
+       List<String> listaDeTarefasString = new ArrayList<>();
+        for(Tarefa tarefa : lista){
+            listaDeTarefasString.add(tarefa.toString());
+
+        }
+        return listaDeTarefasString;
+    }
+
+    public List <String> listagemDeTarefasComFiltroPorTitulo(){
+        List<Tarefa> tarefasNaoRemovidas = tarefasNaoDeletadas();
+        Collections.sort(tarefasNaoRemovidas, new ComparaPorTitulo());
+        return exibiListaDeTarefas(tarefasNaoRemovidas);
+    }
+
+    public List <String> listagemDeTarefasComFitroPorDataDeVencimento(){
+        List <Tarefa> tarefasNaoRemovidas = tarefasNaoDeletadas();
+        Collections.sort(tarefasNaoRemovidas, new ComparaPorDataDeVencimento());
+        return exibiListaDeTarefas(tarefasNaoRemovidas);
+    }
+
+
+    public List <Tarefa> atualizaTarefaPorTitulo(String titulo){
+        // metodo esta errado
+
+        for(int i = 0; i < 10; i++){
+            if(listaTarefas.size() == i){
+                listaTarefas.get(i).setTitulo(titulo);
+                return listaTarefas;
+
+
+            }
+        }
+        return null;
+    }
+
+    public List<Tarefa> atualizaTarefaPorDescricao(String descricao){
+        for(int i = 0; i < 10; i++){
+            if(listaTarefas.size() == i){
+                 listaTarefas.get(i).setDescricao(descricao);
+                 return listaTarefas;
+            }
+        } return null;
+    }
+
+    // precisa criar um metodo pra informa se a data esta presente ou nao;
+
+    public List<Tarefa> atualizaTarefaInformaSeATarefaEstaPendente(){
+        //Crio um for? Pra varrer a lista, encontrar a tarefa pra depois informa se ela esta pendente ou não???
+        Date dataDeHoje = new Date();
+        for(int i = 0; i < 10; i++) {
+            if (listaTarefas.size() == i) {
+                if (listaTarefas)
+
+            }
+        } return null;
 
     }
-    public Tarefas atualizarTarefa(int opcaoEscolhida){
-        Tarefas tarefa;
+    public Tarefa atualizarTarefa(int opcaoEscolhida){
+        Tarefa tarefa;
         switch (opcaoEscolhida){
             case 1:
                 String titulo;
@@ -62,17 +123,22 @@ public class GerenciadorDeTarefas {
     }
 
     public String exibicaoDeTarefa(int identificaAtividade){
-        List<Tarefas> listaDeTarefas = new ArrayList<>();
+        List<Tarefa> listaDeTarefas = new ArrayList<>();
         String tarefaEncontrada = String.valueOf(listaDeTarefas.get(identificaAtividade));
         return tarefaEncontrada;
 
 
     }
-    public List <Tarefas> exclusaoDeTarefa(int identificaTarefa){
-        List<Tarefas> listaDeTarefas = new ArrayList<>();
+    public List <Tarefa> exclusaoDeTarefa(int identificaTarefa){
+        List<Tarefa> listaDeTarefas = new ArrayList<>();
         listaDeTarefas.remove(identificaTarefa);
         return listaDeTarefas;
     }
 
-
+    @Override
+    public String toString() {
+        return "GerenciadorDeTarefas{" +
+                "listaTarefas=" + listaTarefas +
+                '}';
+    }
 }

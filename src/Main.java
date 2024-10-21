@@ -1,9 +1,12 @@
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        Fachada fachada = new Fachada();
         Scanner sc = new Scanner(System.in);
         int opcaoEscolhida = escolheOTipoDeServico(sc);
         switch (opcaoEscolhida){
@@ -17,6 +20,7 @@ public class Main {
                 System.out.println("2-Pelo título ");
                 System.out.println("3-Pela data de vencimento");
                 int opcaoEscolhido = sc .nextInt();
+
 
             case 3:
 
@@ -42,6 +46,23 @@ public class Main {
         }
 
 
+    }
+
+    public List<Tarefa> listagemDeTarefas( Fachada fachada,int recebeOpcaoEscolhida) {
+        switch (recebeOpcaoEscolhida){
+            //Criar um metodo pra cada case
+            case 1:
+
+                return fachada.listaDeTarefasPorData();
+
+            case 2:
+                Collections.sort(listaTarefas, new ComparaPorTitulo()  );
+                return listaTarefas;
+
+            case 3:
+                Collections.sort(listaTarefas, new ComparaPorDataDeVencimento());
+                return listaTarefas;
+        } return null;
     }
 
     private static int escolheOTipoDeServico(Scanner sc) {

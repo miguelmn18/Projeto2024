@@ -1,9 +1,8 @@
-import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Date;
 
-public class ComparaPorDataDeVencimento implements Comparator<Tarefas> {
-    public int compare(Tarefas o1, Tarefas o2) {
+public class ComparaPorDataDeVencimento implements Comparator<Tarefa> {
+    public int compare(Tarefa o1, Tarefa o2) {
 
         Date dataDeHoje = new Date();
 

@@ -4,16 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 public class Fachada  {
-    List<Tarefas> listaDeTarefas = new ArrayList<>();
+    private GerenciadorDeTarefas gerenciaTarefas = new GerenciadorDeTarefas();
+    List<Tarefa> listaDeTarefas = new ArrayList<>();
 
     public GerenciadorDeTarefas criaTarefa (String titulo, String descricao, Date data, int prioridade ){
-        Tarefas tarefa = new Tarefas(titulo,descricao,new Date(),prioridade);
+        Tarefa tarefa = new Tarefa(titulo,descricao,new Date(),prioridade);
         listaDeTarefas.add(tarefa);
         return (GerenciadorDeTarefas) listaDeTarefas;
     }
 
     public GerenciadorDeTarefas criaListagemDeTarefas(int opcaoEscolhida){
-        for(Tarefas tarefa : listaDeTarefas){
+        for(Tarefa tarefa : listaDeTarefas){
             listaDeTarefas = new GerenciadorDeTarefas().listagemDeTarefas(opcaoEscolhida);
             return (GerenciadorDeTarefas) listaDeTarefas;
         } return null;
@@ -21,7 +22,7 @@ public class Fachada  {
     }
 
     public GerenciadorDeTarefas criaListagemDeTarefasComFiltro (int opcaoEscolhida){
-        for(Tarefas tarefa2 : listaDeTarefas){
+        for(Tarefa tarefa2 : listaDeTarefas){
             listaDeTarefas = new GerenciadorDeTarefas().listagemDeTarefasComFiltro(opcaoEscolhida);
             return (GerenciadorDeTarefas) listaDeTarefas;
         }
@@ -44,6 +45,10 @@ public class Fachada  {
         listaDeTarefas = new GerenciadorDeTarefas().exclusaoDeTarefa(opcaoEscolhida);
         return (GerenciadorDeTarefas) listaDeTarefas;
 
+    }
+
+    public List<String> listaDeTarefasPorData (){
+        return gerenciaTarefas.listagemDeTarefaPorData();
     }
 
 }

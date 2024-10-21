@@ -1,13 +1,19 @@
 import java.util.Date;
 import java.util.Objects;
 
-public class Tarefas {
+public class Tarefa {
     String titulo;
     String descricao;
     Date data;
     int prioridadeTarefa;
 
-    public Tarefas(String titulo, String descricao, Date data, int prioridadeTarefa) {
+    private int id;
+    boolean removido = false;
+
+
+
+    public Tarefa(int id,String titulo, String descricao, Date data, int prioridadeTarefa) {
+        this.id = id;
         this.titulo = titulo;
         this.descricao = descricao;
         this.data = data;
@@ -34,6 +40,14 @@ public class Tarefas {
         return data;
     }
 
+    public boolean isRemovido() {
+        return removido;
+    }
+
+    public void setRemovido(boolean removido) {
+        this.removido = removido;
+    }
+
     public void setData(Date data) {
         this.data = data;
     }
@@ -47,25 +61,27 @@ public class Tarefas {
     }
 
     @Override
-    public String toString() {
-        return "Tarefas{" +
-                "titulo='" + titulo + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", data=" + data +
-                ", prioridadeTarefa=" + prioridadeTarefa +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tarefas tarefas = (Tarefas) o;
-        return prioridadeTarefa == tarefas.prioridadeTarefa && Objects.equals(titulo, tarefas.titulo) && Objects.equals(descricao, tarefas.descricao) && Objects.equals(data, tarefas.data);
+        Tarefa tarefa = (Tarefa) o;
+        return prioridadeTarefa == tarefa.prioridadeTarefa && id == tarefa.id && removido == tarefa.removido && Objects.equals(titulo, tarefa.titulo) && Objects.equals(descricao, tarefa.descricao) && Objects.equals(data, tarefa.data);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titulo, descricao, data, prioridadeTarefa);
+        return Objects.hash(titulo, descricao, data, prioridadeTarefa, id, removido);
+    }
+
+    @Override
+    public String toString() {
+        return "Tarefa{" +
+                "titulo='" + titulo + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", data=" + data +
+                ", prioridadeTarefa=" + prioridadeTarefa +
+                ", id=" + id +
+                ", removido=" + removido +
+                '}';
     }
 }
