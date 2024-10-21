@@ -5,15 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Qual tipo de serviço você deseja realizar no sistema de tarefas? ");
-        System.out.println("1- Criação de tarefas");
-        System.out.println("2- Listagem de tarefas");
-        System.out.println("3- Listagem de tarefas com filtros");
-        System.out.println("4- Atualização de tarefas");
-        System.out.println("5- Exibição de tarefas");
-        System.out.println("6- Exclusão de tarefas");
-        System.out.println("0- Para sair do sistema");
-        int opcaoEscolhida = sc.nextInt();
+        int opcaoEscolhida = escolheOTipoDeServico(sc);
         switch (opcaoEscolhida){
 
             case 1:
@@ -28,6 +20,16 @@ public class Main {
 
             case 3:
 
+                System.out.println("A partir de qual requistitos abaixo você deseja que ordenemos a sua lista de tarefas? ");
+                System.out.println("1-Por titulo");
+                System.out.println("2-Por data de criação");
+                int opcaoEscolhida2 = sc.nextInt();
+                switch (opcaoEscolhida2){
+                    case 1:
+
+                    case 2:
+                }
+
             case 4:
 
             case 5:
@@ -40,5 +42,18 @@ public class Main {
         }
 
 
+    }
+
+    private static int escolheOTipoDeServico(Scanner sc) {
+        System.out.println("Qual tipo de serviço você deseja realizar no sistema de tarefas? ");
+        System.out.println("1- Criação de tarefas");
+        System.out.println("2- Listagem de tarefas");
+        System.out.println("3- Listagem de tarefas com filtros");
+        System.out.println("4- Atualização de tarefas");
+        System.out.println("5- Exibição de tarefas");
+        System.out.println("6- Exclusão de tarefas");
+        System.out.println("0- Para sair do sistema");
+        int opcaoEscolhida = sc.nextInt();
+        return opcaoEscolhida;
     }
 }
