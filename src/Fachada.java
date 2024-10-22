@@ -1,54 +1,81 @@
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Fachada  {
-    private GerenciadorDeTarefas gerenciaTarefas = new GerenciadorDeTarefas();
+
     List<Tarefa> listaDeTarefas = new ArrayList<>();
 
-    public GerenciadorDeTarefas criaTarefa (String titulo, String descricao, Date data, int prioridade ){
-        Tarefa tarefa = new Tarefa(titulo,descricao,new Date(),prioridade);
-        listaDeTarefas.add(tarefa);
-        return (GerenciadorDeTarefas) listaDeTarefas;
-    }
 
-    public GerenciadorDeTarefas criaListagemDeTarefas(int opcaoEscolhida){
-        for(Tarefa tarefa : listaDeTarefas){
-            listaDeTarefas = new GerenciadorDeTarefas().listagemDeTarefas(opcaoEscolhida);
-            return (GerenciadorDeTarefas) listaDeTarefas;
-        } return null;
+    public String criaServicoDeListagemPorDataDeVencimento(){
+        // atualiza o codigo para rodar certinho gi
+        listaDeTarefas = new GerenciadorDeTarefas().listagemDeTarefasComFitroPorDataDeVencimento();
+        String criaServico = listaDeTarefas.toString();
+        return criaServico;
 
     }
-
-    public GerenciadorDeTarefas criaListagemDeTarefasComFiltro (int opcaoEscolhida){
-        for(Tarefa tarefa2 : listaDeTarefas){
-            listaDeTarefas = new GerenciadorDeTarefas().listagemDeTarefasComFiltro(opcaoEscolhida);
-            return (GerenciadorDeTarefas) listaDeTarefas;
-        }
+    public String criaServicoDeListagemDeTarefasPorTitulo(){
+        // atualiza o codigo pra rodar certinho
+        listaDeTarefas = new GerenciadorDeTarefas().listagemDeTarefasComFiltroPorTitulo();
+        String criaServico = listaDeTarefas.toString();
+        return criaServico;
 
     }
 
-    public GerenciadorDeTarefas criaAtualizacaoDeTarefa(int opcaoEscolhida){
-        listaDeTarefas = new GerenciadorDeTarefas().atualizarTarefa(opcaoEscolhida);
-        return (GerenciadorDeTarefas) listaDeTarefas;
+    public String criaServicoDeAtualizarTarefaPorDescricao(String descricao){
+        listaDeTarefas = new GerenciadorDeTarefas().atualizaTarefaPorDescricao(descricao);
+        String criaServico = listaDeTarefas.toString();
+        return criaServico;
     }
 
-    public GerenciadorDeTarefas criaExibicaoDeTarefa(int identificaTarefa){
-        // precisa rever os metodos na classe Gerenciador
-        new GerenciadorDeTarefas().exibicaoDeTarefa(identificaTarefa);
-        return (GerenciadorDeTarefas) listaDeTarefas;
+    public String criaServicoDeAtualizarTarefaPorTitulo (String titulo){
+        listaDeTarefas = new GerenciadorDeTarefas().atualizaTarefaPorTitulo(titulo);
+        String criaServico = listaDeTarefas.toString();
+        return criaServico;
+    }
+
+
+    public String criaServicoDeExibirLista (int id){
+        listaDeTarefas = new GerenciadorDeTarefas().exibicaoDeTarefa(id).;
+        String criaServico = listaDeTarefas.toString();
+        return criaServico;
 
     }
 
-    public GerenciadorDeTarefas criaExclusaoDeTarefa(int opcaoEscolhida){
-        listaDeTarefas = new GerenciadorDeTarefas().exclusaoDeTarefa(opcaoEscolhida);
-        return (GerenciadorDeTarefas) listaDeTarefas;
+    public String criaServicoDeInformarSeATarefaEstaPendente (int id){
+        // precisa concertar
+        listaDeTarefas = new GerenciadorDeTarefas().informaSeATarefaEstaPendente(id);
+        String criaServico = listaDeTarefas.toString();
+        return criaServico;
+    }
+
+
+    public String criaServicoDeExclusaoDeTarefa (int id){
+        listaDeTarefas = new GerenciadorDeTarefas().exclusaoDeTarefa(id);
+        String criaServico = listaDeTarefas.toString();
+        return criaServico;
+
+    }
+    public Tarefa criaServicoDeListagemPorData(){
+        listaDeTarefas = new GerenciadorDeTarefas().listagemDeTarefaPorData();
+        return (Tarefa) listaDeTarefas;
 
     }
 
-    public List<String> listaDeTarefasPorData (){
-        return gerenciaTarefas.listagemDeTarefaPorData();
+    public String criaServicoDeListagemPorTitulo (){
+        listaDeTarefas = new GerenciadorDeTarefas().listagemDeTarefaPorTitulo();
+        String criaServico = listaDeTarefas.toString();
+        return criaServico;
+
+    }
+
+    public String criaServicoDeListagemPorDataDeVencimento(){
+        listaDeTarefas = new GerenciadorDeTarefas().listagemDeTarefaPorDataDeVencimento();
+        String criaServico = listaDeTarefas.toString();
+        return criaServico;
+
     }
 
 }

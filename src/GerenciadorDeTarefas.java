@@ -5,7 +5,7 @@ public class GerenciadorDeTarefas {
     private List<Tarefa> listaTarefas = new ArrayList<>();
 
 
-    public Tarefa criaTarefa (String titulo, String descricao, Date data, int prioridadeDaTarefa){
+    public Tarefa criaTarefa (int id, String titulo, String descricao, Date data, int prioridadeDaTarefa){
         Tarefa tarefa = new Tarefa(listaTarefas.size() ,titulo,descricao,data,prioridadeDaTarefa);
         listaTarefas.add(tarefa);
         return tarefa;
@@ -88,44 +88,26 @@ public class GerenciadorDeTarefas {
         } return null;
     }
 
-    // precisa criar um metodo pra informa se a data esta presente ou nao;
+    // precisa criar um metodo pra informa se a tarefa esta pendente ou nao;
 
-    public List<Tarefa> atualizaTarefaInformaSeATarefaEstaPendente(){
-        //Crio um for? Pra varrer a lista, encontrar a tarefa pra depois informa se ela esta pendente ou não???
-        Date dataDeHoje = new Date();
-        for(int i = 0; i < 10; i++) {
-            if (listaTarefas.size() == i) {
-                if (listaTarefas)
-
-            }
-        } return null;
-
-    }
-    public Tarefa atualizarTarefa(int opcaoEscolhida){
-        Tarefa tarefa;
-        switch (opcaoEscolhida){
-            case 1:
-                String titulo;
-                return tarefa.setTitulo(titulo);
-
-            case 2:
-                String descricao;
-                return tarefa.setDescricao(descricao);
-
-            case 3:
-                Date dataDeHoje = new Date();
-                if (tarefa.getData().before(dataDeHoje)) {
-                    String mensagem = "Pendente";
+    public String informaSeATarefaEstaPendente(int escolha){
+        // Criar uma lista de String
+        List<String> listaDeTarefasPendentes = new ArrayList<>();
+        //O usuario precisa informar se a atividade esta ou não pendente, preciso criar algo que faça sentido
+        if(escolha >= 0 && escolha < listaTarefas.size()){
+                Tarefa tarefaEscolhida = listaTarefas.get(escolha);
+                String informa = "Pendente" + tarefaEscolhida.toString();
+                return informa;
 
 
-                }
         }
+        return null;
     }
 
-    public String exibicaoDeTarefa(int identificaAtividade){
+    public Tarefa exibicaoDeTarefa(int identificaAtividade){
         List<Tarefa> listaDeTarefas = new ArrayList<>();
-        String tarefaEncontrada = String.valueOf(listaDeTarefas.get(identificaAtividade));
-        return tarefaEncontrada;
+        return listaDeTarefas.get(identificaAtividade);
+
 
 
     }
