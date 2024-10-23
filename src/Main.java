@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class Main {
     public static void main(String[] args) {
         List<Tarefa> listaDeTarefas = new ArrayList<>();
@@ -27,6 +28,7 @@ public class Main {
                     listaDeTarefas.add(criaTarefa);
                     break;
 
+
                 case 2:
                     System.out.println("A partir de qual forma você deseja que a listagem de tarefas ocorra? ");
                     System.out.println("1-Pela data de criação ");
@@ -38,13 +40,16 @@ public class Main {
                             listaDeTarefas = (List<Tarefa>) fachada.criaServicoDeListagemPorData();
                             break;
                         case 2:
-
+                            listaDeTarefas = (List<Tarefa>) fachada.criaListagemPorTitulo();
                             break;
                         case 3:
-
+                            listaDeTarefas = (List<Tarefa>) fachada.criaListagemPorDataDeVencimento();
                             break;
                     }
                     break;
+
+
+
 
                 case 3:
                     System.out.println("A partir de qual requisito abaixo você deseja que ordenemos a sua lista de tarefas? ");
@@ -53,30 +58,38 @@ public class Main {
                     int opcaoEscolhida2 = sc.nextInt();
                     switch (opcaoEscolhida2) {
                         case 1:
-
+                            listaDeTarefas = (List<Tarefa>) fachada.criaListagemPorDataDeDeCriacao();
                             break;
                         case 2:
-
+                            listaDeTarefas = (List<Tarefa>) fachada.criaListagemPorTitulo();
                             break;
                     }
                     break;
 
+
                 case 4:
 
+
                     break;
+
 
                 case 5:
 
+
                     break;
+
 
                 case 6:
 
+
                     break;
+
 
                 case 0:
                     System.out.println("Saindo do sistema...");
                     sc.close();
                     return;
+
 
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
@@ -84,6 +97,7 @@ public class Main {
             }
         }
     }
+
 
     private static int escolheOTipoDeServico(Scanner sc) {
         System.out.println("Qual tipo de serviço você deseja realizar no sistema de tarefas? ");

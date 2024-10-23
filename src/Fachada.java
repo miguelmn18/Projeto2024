@@ -79,4 +79,16 @@ public class Fachada  {
         return o;
         //adicionado//
     }
+
+    public Object criaListagemPorTitulo() {
+        return null;
+    }
+
+    public Object criaListagemPorDataDeDeCriacao() {
+        return null;
+    }
+
+    public Object criaListagemPorDataDeVencimento() {
+        return null;
+    }
 }
