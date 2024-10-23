@@ -68,20 +68,18 @@ public class Main {
 
 
                 case 4:
-
-
+                    listaDeTarefas = (List<Tarefa>) fachada.criaListagemPorAtualizacaoDeTarefas();
                     break;
 
 
                 case 5:
-
+                    listaDeTarefas = (List<Tarefa>) fachada.criaListagemPorExibicaoDeTarefas();
 
                     break;
 
 
                 case 6:
-
-
+                    listaDeTarefas = (List<Tarefa>) fachada.criaListagemPorExclusaoDeTarefas();
                     break;
 
 

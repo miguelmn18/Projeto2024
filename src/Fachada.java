@@ -91,4 +91,16 @@ public class Fachada  {
     public Object criaListagemPorDataDeVencimento() {
         return null;
     }
+
+    public Object criaListagemPorAtualizacaoDeTarefas() {
+        return null;
+    }
+
+    public Object criaListagemPorExibicaoDeTarefas() {
+        return null;
+    }
+
+    public Object criaListagemPorExclusaoDeTarefas() {
+        return null;
+    }
 }
