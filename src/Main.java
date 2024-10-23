@@ -36,7 +36,7 @@ public class Main {
                 int opcaoEscolhido = sc .nextInt();
                 switch (opcaoEscolhido){
                     case 1:
-                        listaDeTarefas = new Fachada().criaServicoDeListagemPorData();
+                        listaDeTarefas = (List<Tarefa>) new Fachada().criaS1ervicoDeListagemPorData();
                         break;
                     case 2:
 

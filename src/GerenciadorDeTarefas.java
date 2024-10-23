@@ -58,7 +58,7 @@ public class GerenciadorDeTarefas {
         return exibiListaDeTarefas(tarefasNaoRemovidas);
     }
 
-    public List <String> listagemDeTarefasComFitroPorDataDeVencimento(){
+    public List <String> listagemDeTarefasComFiltroPorDataDeVencimento(){
         List <Tarefa> tarefasNaoRemovidas = tarefasNaoDeletadas();
         Collections.sort(tarefasNaoRemovidas, new ComparaPorDataDeVencimento());
         return exibiListaDeTarefas(tarefasNaoRemovidas);
